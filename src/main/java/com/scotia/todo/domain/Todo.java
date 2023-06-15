@@ -4,37 +4,44 @@ import java.time.LocalDateTime;
 
 public class Todo {
 
-    private int taskId;
-    private String taskTitle;
-    private String taskDescription;
+    private int todoId;
+    private String todoTitle;
+    private String todoDescription;
     private Integer statusId;
     private LocalDateTime createdDate;
     private LocalDateTime completedDate;
-    private State taskState;
+    private State todoState;
 
-
-    public int getTaskId() {
-        return taskId;
+    public State getTodoState() {
+        return todoState;
     }
 
-    public void setTaskId(int taskId) {
-        this.taskId = taskId;
+    public void setTodoState(State todoState) {
+        this.todoState = todoState;
     }
 
-    public String getTaskTitle() {
-        return taskTitle;
+    public int getTodoId() {
+        return todoId;
     }
 
-    public void setTaskTitle(String taskTitle) {
-        this.taskTitle = taskTitle;
+    public void setTodoId(int todoId) {
+        this.todoId = todoId;
     }
 
-    public String getTaskDescription() {
-        return taskDescription;
+    public String getTodoTitle() {
+        return todoTitle;
     }
 
-    public void setTaskDescription(String taskDescription) {
-        this.taskDescription = taskDescription;
+    public void setTodoTitle(String todoTitle) {
+        this.todoTitle = todoTitle;
+    }
+
+    public String getTodoDescription() {
+        return todoDescription;
+    }
+
+    public void setTodoDescription(String todoDescription) {
+        this.todoDescription = todoDescription;
     }
 
     public Integer getStatusId() {
@@ -59,13 +66,5 @@ public class Todo {
 
     public void setCompletedDate(LocalDateTime completedDate) {
         this.completedDate = completedDate;
-    }
-
-    public State getTaskStatus() {
-        return taskState;
-    }
-
-    public void setTaskStatus(State taskState) {
-        this.taskState = taskState;
     }
 }

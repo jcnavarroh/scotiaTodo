@@ -8,10 +8,10 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
 @Mapper(componentModel = "spring")
-public interface StatusMapper {
+public interface StateMapper {
     @Mappings({
-            @Mapping(source = "idStatus", target = "statusId"),
-            @Mapping(source = "status", target = "name"),
+            @Mapping(source = "idStatus", target = "stateID"),
+            @Mapping(source = "name", target = "state"),
     })
     State toState(Status status);
 

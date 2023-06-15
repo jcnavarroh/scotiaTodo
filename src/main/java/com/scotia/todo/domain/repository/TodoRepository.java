@@ -5,16 +5,16 @@ import com.scotia.todo.domain.Todo;
 import java.util.List;
 import java.util.Optional;
 
-public interface taskRepository {
+public interface TodoRepository {
     List<Todo> getAll();
 
-    Optional<List<Todo>> getByStatus(int statusId);
+    Optional<List<Todo>> getByState(int stateId);
 
-    Optional<List<Todo>> getTask(int taskId);
+    Optional<Todo> getTodo(int todoId);
 
     Todo save(Todo todo);
 
-    void delete(int taskId);
+    void delete(int todoId);
 
 
 }

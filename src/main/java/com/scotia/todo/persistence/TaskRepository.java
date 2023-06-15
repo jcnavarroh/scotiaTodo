@@ -1,34 +1,48 @@
 package com.scotia.todo.persistence;
 
+import com.scotia.todo.domain.Todo;
+import com.scotia.todo.domain.repository.TodoRepository;
 import com.scotia.todo.persistence.crud.TaskCrudRepository;
 import com.scotia.todo.persistence.entity.Task;
+import com.scotia.todo.persistence.mapper.TodoMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class TaskRepository {
+public class TaskRepository implements TodoRepository {
+
+    @Autowired
     private TaskCrudRepository taskCrudRepository;
 
-    public List<Task> getAll() {
-        return (List<Task>) taskCrudRepository.findAll();
-    }
+    @Autowired
+    private TodoMapper mapper;
+    @Override
+    public List<Todo> getAll() {
 
-    public List<Task> getByStatus(int idStatus) {
+        List<Task> tasks = (List<Task>) taskCrudRepository.findAll();
+        return mapper.toTodos(tasks);
+    }
+    @Override
+    public Optional<List<Todo>> getByState(int stateId) {
         //Query Method to request filter results by status
-        return taskCrudRepository.findByIdStatusOrderByCreatedAtAsc(idStatus);
-
+        List<Task> Tasks = taskCrudRepository.findByIdStatusOrderByCreatedAtAsc(stateId);
+        return Optional.of(mapper.toTodos(Tasks));
     }
-    public Optional<Task> getTask(int idTask) {
-        return taskCrudRepository.findById(idTask);
-    }
-
-    public Task save(Task task) {
-        return taskCrudRepository.save(task);
+    @Override
+    public Optional<Todo> getTodo(int todoId) {
+        return taskCrudRepository.findById(todoId).map(task -> mapper.toTodo(task));
     }
 
-    public void delete(int idTask) {
-        taskCrudRepository.deleteById(idTask);
+    @Override
+    public Todo save(Todo todo) {
+        Task task = mapper.toTask(todo);
+        return mapper.toTodo(taskCrudRepository.save(task));
+    }
+    @Override
+    public void delete(int todoId) {
+        taskCrudRepository.deleteById(todoId);
     }
 }

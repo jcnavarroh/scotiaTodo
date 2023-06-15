@@ -34,6 +34,14 @@ public class Task {
         return idTask;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     public void setIdTask(Integer idTask) {
         this.idTask = idTask;
     }

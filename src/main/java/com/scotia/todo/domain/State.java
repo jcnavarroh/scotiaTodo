@@ -2,23 +2,23 @@ package com.scotia.todo.domain;
 
 public class State {
 
-    public int getStatusID() {
-        return statusID;
+    private int stateID;
+    private String state;
+
+    public int getStateID() {
+        return stateID;
     }
 
-    public void setStatusID(int statusID) {
-        this.statusID = statusID;
+    public void setStateID(int stateID) {
+        this.stateID = stateID;
     }
 
-    public String getStatus() {
-        return status;
+    public String getState() {
+        return state;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setState(String state) {
+        this.state = state;
     }
-
-    private int statusID;
-    private String status;
 
 }
