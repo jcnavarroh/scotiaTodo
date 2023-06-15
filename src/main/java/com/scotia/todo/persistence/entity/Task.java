@@ -1,6 +1,6 @@
 package com.scotia.todo.persistence.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import java.time.LocalDateTime;
